@@ -71,30 +71,6 @@ public class StudentRepository : IStudentRepository
             },
             splitOn: "Id"
         ).ToList();
-        // db.Query<StudentWithCourses, Course, StudentWithCourses>(
-        //     "SELECT s.Id, s.Name, s.Age, s.Email, c.Id, c.CourseName " +
-        //     "FROM Students s " +
-        //     "LEFT JOIN StudentCourse sc ON s.Id = sc.StudentId " +
-        //     "LEFT JOIN Course c ON sc.CourseId = c.Id " +
-        //     "ORDER BY s.Id",
-        //     (student, course) =>
-        //     {
-        //         if (!studentDictionary.TryGetValue(student.Id, out var Existing))
-        //         {
-        //             Existing = student;
-        //             studentDictionary.Add(student.Id, Existing);
-        //         }
-
-        //         if (course != null)
-        //         {
-        //             Existing.Courses.Add(course);
-        //         }
-
-        //         return Existing;
-        //     },
-        //     splitOn: "CourseName"
-        // );
-
         return studentDictionary.Values;
     }
 }
