@@ -40,4 +40,16 @@ public class StudentController : ControllerBase
         _repo.Delete(id);
         return NoContent();
     }
+    [HttpGet("search")]
+    public IActionResult SearchByName([FromQuery] string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            return BadRequest("Name không được để trống");
+        return Ok(_repo.SearchByName(name));
+    }
+    [HttpGet("courses")]
+    public IActionResult GetAllWithCourses()
+    {
+        return Ok(_repo.GetAllWithCourses());
+    }
 }
